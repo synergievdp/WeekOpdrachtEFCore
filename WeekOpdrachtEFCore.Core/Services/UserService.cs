@@ -21,22 +21,22 @@ namespace WeekOpdrachtEFCore.Core.Services
         {
             Guard.IsNotNullOrWhiteSpace(user.Surname, nameof(user.Surname));
             if (!System.Net.Mail.MailAddress.TryCreate(user.Email, out _))
-                throw new ArgumentException(nameof(user.Email));
+                throw new ArgumentException("Email is invalid", nameof(user.Email));
             if (users.Count(u => u.Email == user.Email) > 0)
-                throw new ArgumentException("Email already exists");
+                throw new ArgumentException("Email already exists", nameof(user.Email));
             users.Insert(user);
         }
 
         public User GetById(int id)
         {
             Guard.IsMoreThan(0, id, nameof(id));
-            return users.GetById(id);
+            return users.Get(u => u.Id == id);
         }
 
         public User GetByEmail(string email)
         {
             if (!System.Net.Mail.MailAddress.TryCreate(email, out _))
-                throw new ArgumentException(nameof(email));
+                throw new ArgumentException("Email is invalid", nameof(email));
             return users.Get(u => u.Email == email);
         }
     }

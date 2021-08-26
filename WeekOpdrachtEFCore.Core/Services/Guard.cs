@@ -12,7 +12,7 @@ namespace WeekOpdrachtEFCore.Core.Services
         {
             if (argumentValue <= minValue)
             {
-                throw new ArgumentException(argumentName);
+                throw new ArgumentException(null, argumentName);
             }
         }
 

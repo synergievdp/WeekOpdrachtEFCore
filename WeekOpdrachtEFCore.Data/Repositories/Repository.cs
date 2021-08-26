@@ -30,11 +30,6 @@ namespace WeekOpdrachtEFCore.Data.Repositories
             return GetQuery(filter).FirstOrDefault();
         }
 
-        public T GetById(int id)
-        {
-            return table.Find(id);
-        }
-
         public void Insert(T entity)
         {
             table.Add(entity);
