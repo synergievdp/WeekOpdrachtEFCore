@@ -28,7 +28,8 @@ namespace WeekOpdrachtEFCore.Core2.UnitTests.Services.MessageServiceTests
             table.As<IQueryable<Message>>().Setup(m => m.ElementType).Returns(items.ElementType);
             table.As<IQueryable<Message>>().Setup(m => m.GetEnumerator()).Returns(() => items.GetEnumerator());
 
-            context = new Mock<DataContext>();
+            var options = new DbContextOptionsBuilder<DataContext>().Options;
+            context = new Mock<DataContext>(options);
             context.Setup(c => c.Set<Message>()).Returns(table.Object);
             sut = new MessageService(context.Object);
         }

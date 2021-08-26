@@ -12,5 +12,10 @@ namespace WeekOpdrachtEFCore.Core2
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Message> Messages { get; set; }
+
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+
+        }
     }
 }

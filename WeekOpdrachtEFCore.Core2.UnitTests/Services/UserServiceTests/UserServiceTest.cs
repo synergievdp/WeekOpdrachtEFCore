@@ -30,7 +30,8 @@ namespace WeekOpdrachtEFCore.Core2.UnitTests.Services.UserServiceTests
             table.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(items.ElementType);
             table.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(() => items.GetEnumerator());
 
-            context = new Mock<DataContext>();
+            var options = new DbContextOptionsBuilder<DataContext>().Options;
+            context = new Mock<DataContext>(options);
             context.Setup(c => c.Set<User>()).Returns(table.Object);
             sut = new UserService(context.Object);
         }
