@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\WeekOpdrachtEFCore.Core\WeekOpdrachtEFCore.Core.csproj" />
     <ProjectReference Include="..\WeekOpdrachtEFCore.Data\WeekOpdrachtEFCore.Data.csproj" />
   </ItemGroup>

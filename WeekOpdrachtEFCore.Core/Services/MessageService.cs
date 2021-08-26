@@ -19,17 +19,21 @@ namespace WeekOpdrachtEFCore.Core.Services
         }
         public void Add(Message message)
         {
+            Guard.IsNotNullOrWhiteSpace(message.Title, nameof(Message.Title));
+            Guard.IsMoreThan(0, message.SenderId, nameof(message.SenderId));
             messages.Insert(message);
         }
 
         public Message GetById(int id)
         {
+            Guard.IsMoreThan(0, id, nameof(id));
             return messages.GetById(id);
         }
 
-        public Message GetByUserId(int id)
+        public Message GetByUserId(int userid)
         {
-            return messages.Get(message => message.SenderId == id);
+            Guard.IsMoreThan(0, userid, nameof(userid));
+            return messages.Get(message => message.SenderId == userid);
         }
     }
 }
