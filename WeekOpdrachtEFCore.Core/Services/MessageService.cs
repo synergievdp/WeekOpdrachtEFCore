@@ -13,7 +13,7 @@ namespace WeekOpdrachtEFCore.Core.Services
     {
         private readonly IRepository<Message> messages;
 
-        public MessageService(IRepository<Message> messages)
+        public MessageService(IMessageRepository messages)
         {
             this.messages = messages;
         }
@@ -27,7 +27,7 @@ namespace WeekOpdrachtEFCore.Core.Services
         public Message GetById(int id)
         {
             Guard.IsMoreThan(0, id, nameof(id));
-            return messages.GetById(id);
+            return messages.Get(m => m.Id == id);
         }
 
         public Message GetByUserId(int userid)

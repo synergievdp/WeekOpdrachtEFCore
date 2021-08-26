@@ -30,7 +30,9 @@ namespace WeekOpdrachtEFCore.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateTimeSend")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<int>("SenderId")
                         .HasColumnType("int");
@@ -50,7 +52,6 @@ namespace WeekOpdrachtEFCore.Data.Migrations
                         {
                             Id = 1,
                             Content = "Content1",
-                            DateTimeSend = new DateTime(2021, 8, 26, 10, 26, 16, 63, DateTimeKind.Local).AddTicks(3047),
                             SenderId = 1,
                             Title = "Title1"
                         },
@@ -58,7 +59,6 @@ namespace WeekOpdrachtEFCore.Data.Migrations
                         {
                             Id = 2,
                             Content = "Content2",
-                            DateTimeSend = new DateTime(2021, 8, 26, 10, 26, 16, 64, DateTimeKind.Local).AddTicks(9136),
                             SenderId = 2,
                             Title = "Title2"
                         });

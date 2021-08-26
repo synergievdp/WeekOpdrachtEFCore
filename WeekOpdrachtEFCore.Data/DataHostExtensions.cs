@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using WeekOpdrachtEFCore.Core.Entities;
 using WeekOpdrachtEFCore.Core.Interfaces.Services;
 
-namespace WeekOpdrachtEFCore.Data.Repositories
+namespace WeekOpdrachtEFCore.Data
 {
     public static class DataHostExtensions
     {

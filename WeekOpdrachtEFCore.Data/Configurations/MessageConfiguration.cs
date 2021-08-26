@@ -13,9 +13,13 @@ namespace WeekOpdrachtEFCore.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Message> builder)
         {
+            builder
+                .Property(m => m.DateTimeSend)
+                .HasDefaultValueSql("getdate()");
+
             builder.HasData(
-                new Message() { Id = 1, Title = "Title1", Content = "Content1", SenderId = 1 },
-                new Message() { Id = 2, Title = "Title2", Content = "Content2", SenderId = 2 }
+                new { Id = 1, Title = "Title1", Content = "Content1", SenderId = 1 },
+                new { Id = 2, Title = "Title2", Content = "Content2", SenderId = 2 }
             );
         }
     }

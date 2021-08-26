@@ -14,8 +14,8 @@ namespace WeekOpdrachtEFCore.Data.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasData(
-                new User() { Id = 1, Email = "test1@example.com", Name = "Name1", Surname = "Surname1" },
-                new User() { Id = 2, Email = "test2@example.com", Name = "Name2", Surname = "Surname2" }
+                new { Id = 1, Email = "test1@example.com", Name = "Name1", Surname = "Surname1" },
+                new { Id = 2, Email = "test2@example.com", Name = "Name2", Surname = "Surname2" }
             );
         }
     }

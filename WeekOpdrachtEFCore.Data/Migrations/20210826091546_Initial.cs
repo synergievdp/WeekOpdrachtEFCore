@@ -31,7 +31,7 @@ namespace WeekOpdrachtEFCore.Data.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SenderId = table.Column<int>(type: "int", nullable: false),
-                    DateTimeSend = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateTimeSend = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {
@@ -56,13 +56,13 @@ namespace WeekOpdrachtEFCore.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Messages",
-                columns: new[] { "Id", "Content", "DateTimeSend", "SenderId", "Title" },
-                values: new object[] { 1, "Content1", new DateTime(2021, 8, 26, 10, 26, 16, 63, DateTimeKind.Local).AddTicks(3047), 1, "Title1" });
+                columns: new[] { "Id", "Content", "SenderId", "Title" },
+                values: new object[] { 1, "Content1", 1, "Title1" });
 
             migrationBuilder.InsertData(
                 table: "Messages",
-                columns: new[] { "Id", "Content", "DateTimeSend", "SenderId", "Title" },
-                values: new object[] { 2, "Content2", new DateTime(2021, 8, 26, 10, 26, 16, 64, DateTimeKind.Local).AddTicks(9136), 2, "Title2" });
+                columns: new[] { "Id", "Content", "SenderId", "Title" },
+                values: new object[] { 2, "Content2", 2, "Title2" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_SenderId",
